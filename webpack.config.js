@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = (argv) => {
@@ -38,7 +39,11 @@ module.exports = (argv) => {
       }),
       new webpack.ProvidePlugin({
         React: 'react'
-      })
+      }),
+      new ESLintPlugin({
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+        eslintPath: 'eslint/use-at-your-own-risk',
+      }),
     ],
 
     resolve: {
