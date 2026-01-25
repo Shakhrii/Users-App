@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Shakhrii/Users-App#readme",
   "dependencies": {
+    "antd": "^5.29.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "styled-components": "^6.3.8"
