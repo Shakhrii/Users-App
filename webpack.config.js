@@ -12,6 +12,7 @@ module.exports = (argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.js',
+      publicPath: '/',
       clean: true,
     },
 
@@ -59,6 +60,7 @@ module.exports = (argv) => {
     },
 
     devServer: {
+      historyApiFallback: true, 
       port: 3000,
       open: true,
       hot: true,
