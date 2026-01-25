@@ -12,10 +12,6 @@ export const Main = styled.main`
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  
-  @media (max-width: 768px) {
-    padding: 15px;
-  }
 `
 
 export const Content = styled.div`
