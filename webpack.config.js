@@ -7,8 +7,12 @@ module.exports = (argv) => {
   const isDev = argv.mode === 'development';
 
   return {
-    entry: './src/index.tsx',
+    cache: {
+      type: 'filesystem',
+    },
     
+    entry: './src/index.tsx',
+
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.js',
@@ -18,7 +22,7 @@ module.exports = (argv) => {
 
     mode: argv.mode || 'development',
 
-    devtool: isDev ? 'inline-source-map' : 'source-map',
+    devtool: isDev ? 'eval-source-map' : 'source-map',
 
     module: {
       rules: [
@@ -39,7 +43,7 @@ module.exports = (argv) => {
         template: './public/index.html',
       }),
       new webpack.ProvidePlugin({
-        React: 'react'
+        React: 'react',
       }),
       new ESLintPlugin({
         extensions: ['js', 'jsx', 'ts', 'tsx'],
@@ -60,10 +64,18 @@ module.exports = (argv) => {
     },
 
     devServer: {
-      historyApiFallback: true, 
+      historyApiFallback: true,
+      liveReload: true,
+      watchFiles: ['src/**/*'],
       port: 3000,
       open: true,
       hot: true,
+    },
+
+    watchOptions: {
+      poll: 1000,
+      aggregateTimeout: 300,
+      ignored: /node_modules/,
     },
   };
 };

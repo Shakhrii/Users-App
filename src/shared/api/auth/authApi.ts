@@ -9,10 +9,7 @@ export interface AuthResponse {
   token: string;
 }
 
-export const loginApi = async (
-  credentials: LoginCredentials
-): Promise<AuthResponse> => {
-
+export const loginApi = async (credentials: LoginCredentials): Promise<AuthResponse> => {
   await delayFn(2000);
 
   return new Promise((resolve, reject) => {

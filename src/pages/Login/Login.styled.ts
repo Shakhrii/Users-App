@@ -1,11 +1,21 @@
+import { Button } from 'antd';
 import styled from 'styled-components';
-import { Button, Form } from 'antd';
 
 export const StyledButton = styled(Button)`
-  align-self: flex-end;
+  display: block;
+  margin-left: auto;
 `;
 
-export const StyledForm = styled(Form)`
+export const StyledContainer = styled.div`
+  width: 400px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+`;
+
+export const StyledTitle = styled.h1`
+  font-size: 16px;
+  font-weight: normal;
+  align-self: flex-start;
+  margin-bottom: 30px;
 `;

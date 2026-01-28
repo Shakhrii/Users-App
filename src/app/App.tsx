@@ -11,7 +11,7 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
-            <Route path='/' element={<Users />}></Route>
+            <Route path="/" element={<Users />}></Route>
             <Route path="/users" element={<Users />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
@@ -20,4 +20,4 @@ export const App = () => {
       </BrowserRouter>
     </QueryProvider>
   );
-}
+};
