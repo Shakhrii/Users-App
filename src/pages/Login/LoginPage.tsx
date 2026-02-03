@@ -12,6 +12,7 @@ type FieldType = {
 
 function LoginPage() {
   const loginMutation = useLoginMutation();
+  const [form] = Form.useForm<FieldType>();
 
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     loginMutation.mutate(
@@ -38,12 +39,14 @@ function LoginPage() {
   return (
     <StyledForm
       name="basic"
+      form={form}
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
       style={{ maxWidth: 600 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
+      validateTrigger="onChange"
       autoComplete="off"
     >
       {loginMutation.isError && (
@@ -69,8 +72,14 @@ function LoginPage() {
         <Input.Password placeholder="Пароль" />
       </Form.Item>
 
-      <Form.Item<FieldType> label={null}>
-        <S.StyledButton type="primary" htmlType="submit">
+      <Form.Item<FieldType> shouldUpdate label={null}>
+        <S.StyledButton
+          type="primary"
+          htmlType="submit"
+          disabled={loginMutation.isPending}
+          loading={loginMutation.isPending}
+          iconPosition="end"
+        >
           Войти
         </S.StyledButton>
       </Form.Item>

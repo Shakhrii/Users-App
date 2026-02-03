@@ -2,7 +2,7 @@ import { Button } from 'antd';
 import styled from 'styled-components';
 
 export const StyledButton = styled(Button)`
-  display: block;
+  display: flex;
   margin-left: auto;
 `;
 
