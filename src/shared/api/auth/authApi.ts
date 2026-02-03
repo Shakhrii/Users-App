@@ -20,11 +20,11 @@ export const loginApi = async (credentials: LoginCredentials): Promise<AuthRespo
         token: 'admin-token',
       });
     } else if (!username || !password) {
-      reject(new Error('Please fill all fields'));
+      reject(new Error('Пожалуйста, заполните все поля'));
     } else if (username !== 'admin') {
-      reject(new Error('Incorrect login'));
+      reject(new Error('Неверный логин'));
     } else {
-      reject(new Error('Incorrect password'));
+      reject(new Error('Неверный пароль'));
     }
   });
 };

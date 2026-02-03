@@ -1,18 +1,33 @@
 import type { FormProps } from 'antd';
-import { Form, Input } from 'antd';
+import { Alert, Form, Input } from 'antd';
 import { StyledForm } from '@shared/ui/index';
 import { useNavigate } from 'react-router';
 import * as S from './Login.styled';
+import { useLoginMutation } from '@features/auth';
 
 type FieldType = {
   username?: string;
   password?: string;
-  remember?: string;
 };
 
-function Login() {
-  const onFinish: FormProps<FieldType>['onFinish'] = () => {
-    navigate('/users');
+function LoginPage() {
+  const loginMutation = useLoginMutation();
+
+  const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+    loginMutation.mutate(
+      {
+        username: values.username || '',
+        password: values.password || '',
+      },
+      {
+        onSuccess: () => {
+          navigate('/users');
+        },
+        onError: (error) => {
+          console.log(error.message);
+        },
+      },
+    );
   };
 
   const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
@@ -31,6 +46,14 @@ function Login() {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
+      {loginMutation.isError && (
+        <Alert
+          type="error"
+          message={loginMutation.error?.message}
+          showIcon
+          style={{ marginBottom: 16 }}
+        />
+      )}
       <S.StyledTitle>Авторизация</S.StyledTitle>
       <Form.Item<FieldType>
         name="username"
@@ -55,4 +78,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;
