@@ -49,14 +49,16 @@ function LoginPage() {
       validateTrigger="onChange"
       autoComplete="off"
     >
-      {loginMutation.isError && (
-        <Alert
-          type="error"
-          message={loginMutation.error?.message}
-          showIcon
-          style={{ marginBottom: 16 }}
-        />
-      )}
+      <S.AlertWrapper>
+        {loginMutation.isError && (
+          <Alert
+            type="error"
+            message={loginMutation.error?.message}
+            showIcon
+            style={{ marginBottom: 16 }}
+          />
+        )}
+      </S.AlertWrapper>
       <S.StyledTitle>Авторизация</S.StyledTitle>
       <Form.Item<FieldType>
         name="username"

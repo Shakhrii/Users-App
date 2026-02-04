@@ -11,14 +11,13 @@ export const App = () => {
     <QueryProvider>
       <BrowserRouter>
         <Routes>
+          <Route element={<PublicRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
           <Route element={<MainLayout />}>
             <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Users />} />
               <Route path="/users" element={<Users />} />
-            </Route>
-
-            <Route element={<PublicRoute />}>
-              <Route path="/login" element={<LoginPage />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />
