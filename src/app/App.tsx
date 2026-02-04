@@ -4,6 +4,7 @@ import Users from '@pages/Users';
 import LoginPage from '@pages/Login';
 import NotFound from '@pages/NotFound';
 import { QueryProvider } from '@app/providers/QueryProvider';
+import { ProtectedRoute, PublicRoute } from '@features/auth';
 
 export const App = () => {
   return (
@@ -11,9 +12,15 @@ export const App = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
-            <Route path="/" element={<Users />}></Route>
-            <Route path="/users" element={<Users />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<Users />} />
+              <Route path="/users" element={<Users />} />
+            </Route>
+
+            <Route element={<PublicRoute />}>
+              <Route path="/login" element={<LoginPage />} />
+            </Route>
+
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
