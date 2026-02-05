@@ -51,10 +51,14 @@ const Users = () => {
       <List
         dataSource={data}
         renderItem={(user) => (
-          <List.Item onClick={() => userClick(user)}>
+          <List.Item>
             <List.Item.Meta
-              avatar={<Avatar src={user.avatar} />}
-              title={user.name}
+              avatar={
+                <S.ClickWrapper onClick={() => userClick(user)}>
+                  <Avatar src={user.avatar} />
+                </S.ClickWrapper>
+              }
+              title={<S.ClickWrapper onClick={() => userClick(user)}>{user.name}</S.ClickWrapper>}
               description={`Зарегистрирован ${dayjs(user.createdAt).format('DD:MM:YYYY')}`}
             />
           </List.Item>

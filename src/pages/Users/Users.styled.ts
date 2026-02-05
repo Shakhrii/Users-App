@@ -18,3 +18,14 @@ export const StyledButton = styled(Button)`
   bottom: 50px;
   align-self: start;
 `;
+
+export const ClickWrapper = styled.span`
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: goldenrod;
+  }
+`;

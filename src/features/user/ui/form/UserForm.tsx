@@ -13,7 +13,7 @@ export const UserForm = ({ form, initialValues, isEdit, onFinish }: Props) => {
     <Form<User> form={form} layout="vertical" initialValues={initialValues} onFinish={onFinish}>
       {isEdit && (
         <Form.Item label="id" name="id">
-          <Input readOnly />
+          <Input disabled />
         </Form.Item>
       )}
 
