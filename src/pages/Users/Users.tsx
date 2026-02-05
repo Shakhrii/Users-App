@@ -1,14 +1,16 @@
 import { List, Avatar, Spin, Alert } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import { useUsersQuery } from '@entities/user';
+import { User, useUsersQuery } from '@entities/user';
 import * as S from './Users.styled';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { CreateUserModal } from '@features/user/ui/createUserModal/CreateUserModal';
+import { CreateUserModal, EditUserModal } from '@features/user/ui/';
 
 const Users = () => {
   const { data, isLoading, isError, error } = useUsersQuery();
   const [isOpenCreateUserForm, setOpenCreateUserForm] = useState(false);
+  const [isOpenEditUserForm, setOpenEditUserForm] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const openCreateUserForm = () => {
     setOpenCreateUserForm(true);
@@ -16,6 +18,16 @@ const Users = () => {
 
   const closeCreateUserForm = () => {
     setOpenCreateUserForm(false);
+  };
+
+  const closeEditUserForm = () => {
+    setOpenEditUserForm(false);
+    setSelectedUser(null);
+  };
+
+  const userClick = (user: User) => {
+    setSelectedUser(user);
+    setOpenEditUserForm(true);
   };
 
   if (isLoading) {
@@ -29,10 +41,17 @@ const Users = () => {
   return (
     <S.Container>
       <CreateUserModal open={isOpenCreateUserForm} onClose={closeCreateUserForm} />
+      {selectedUser && (
+        <EditUserModal
+          open={isOpenEditUserForm}
+          onClose={closeEditUserForm}
+          initialValues={selectedUser}
+        />
+      )}
       <List
         dataSource={data}
         renderItem={(user) => (
-          <List.Item>
+          <List.Item onClick={() => userClick(user)}>
             <List.Item.Meta
               avatar={<Avatar src={user.avatar} />}
               title={user.name}

@@ -1,4 +1,4 @@
-import { useMutationCreateUser } from '@entities/user/model/queries';
+import { useMutationUpdateUser } from '@entities/user/model/queries';
 import { Modal, Form } from 'antd';
 import { UserForm } from '../form/UserForm';
 import { User } from '@entities/user';
@@ -11,7 +11,7 @@ type Props = {
 
 export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
   const [form] = Form.useForm();
-  const createMutation = useMutationCreateUser();
+  const createMutation = useMutationUpdateUser();
 
   const handleOk = async () => {
     try {
@@ -27,12 +27,12 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
 
   return (
     <Modal
-      title="Создать пользователя"
+      title="Редактировать пользователя"
       open={open}
       onCancel={onClose}
       onOk={handleOk}
       confirmLoading={createMutation.isPending}
-      okText="Создать"
+      okText="Сохранить"
       cancelText="Отмена"
       destroyOnHidden
       afterClose={() => form.resetFields()}

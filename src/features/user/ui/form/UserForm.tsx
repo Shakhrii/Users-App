@@ -13,12 +13,12 @@ export const UserForm = ({ form, initialValues, isEdit, onFinish }: Props) => {
     <Form<User> form={form} layout="vertical" initialValues={initialValues} onFinish={onFinish}>
       {isEdit && (
         <Form.Item label="id" name="id">
-          <Input readOnly value={initialValues?.id} />
+          <Input readOnly />
         </Form.Item>
       )}
 
       <Form.Item label="Имя" name="name" rules={[{ required: true, message: 'Введите имя' }]}>
-        <Input value={initialValues?.name} />
+        <Input />
       </Form.Item>
 
       <Form.Item
@@ -29,7 +29,7 @@ export const UserForm = ({ form, initialValues, isEdit, onFinish }: Props) => {
           { type: 'url', message: 'Введите корректный URL' },
         ]}
       >
-        <Input value={initialValues?.avatar} />
+        <Input />
       </Form.Item>
     </Form>
   );

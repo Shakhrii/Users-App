@@ -12,7 +12,7 @@ export const createUser = async (newUser: UserClient): Promise<User> => {
   return data;
 };
 
-export const updateUser = async (id: string, editedUser: UserClient): Promise<User> => {
-  const { data } = await axiosInstance.put<User>(`/users/${id}`, editedUser);
+export const updateUser = async (editedUser: User): Promise<User> => {
+  const { data } = await axiosInstance.put<User>(`/users/${editedUser.id}`, editedUser);
   return data;
 };
