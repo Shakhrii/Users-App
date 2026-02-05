@@ -4,3 +4,5 @@ export interface User {
   avatar: string;
   createdAt: string;
 }
+
+export type UserClient = Omit<User, 'id | createdAt'>;
