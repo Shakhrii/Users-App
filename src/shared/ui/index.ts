@@ -1,1 +1,1 @@
-export { StyledForm } from './Form/StyledForm';
+export { StyledForm } from './form/StyledForm';

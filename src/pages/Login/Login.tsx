@@ -4,6 +4,7 @@ import { StyledForm } from '@shared/ui/index';
 import { useNavigate } from 'react-router';
 import * as S from './Login.styled';
 import { useLoginMutation } from '@features/auth';
+import { useNotifications } from '@shared/ui/notification/NotificationProvider';
 
 type FieldType = {
   username?: string;
@@ -13,6 +14,7 @@ type FieldType = {
 function LoginPage() {
   const loginMutation = useLoginMutation();
   const [form] = Form.useForm<FieldType>();
+  const { notify } = useNotifications();
 
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     loginMutation.mutate(
@@ -23,16 +25,10 @@ function LoginPage() {
       {
         onSuccess: () => {
           navigate('/users');
-        },
-        onError: (error) => {
-          console.log(error.message);
+          notify('success', 'Вы вошли в личный кабинет', '');
         },
       },
     );
-  };
-
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
-    console.log('Failed:', errorInfo);
   };
 
   const navigate = useNavigate();
@@ -45,7 +41,6 @@ function LoginPage() {
       style={{ maxWidth: 600 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       validateTrigger="onChange"
       autoComplete="off"
     >

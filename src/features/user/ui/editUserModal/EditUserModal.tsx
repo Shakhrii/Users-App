@@ -3,6 +3,7 @@ import { Modal, Form, Space, Popconfirm } from 'antd';
 import { UserForm } from '../form/UserForm';
 import { User } from '@entities/user';
 import { ButtonModal } from '../button/ButtonModal';
+import { useNotifications } from '@shared/ui/notification/NotificationProvider';
 
 type Props = {
   open: boolean;
@@ -15,16 +16,20 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
   const editMutation = useMutationUpdateUser();
   const deleteMutation = useMutationDeleteUser();
   const disabled = editMutation.isPending || deleteMutation.isPending;
+  const { notify } = useNotifications();
 
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
 
       editMutation.mutate(values, {
-        onSuccess: onClose,
+        onSuccess: () => {
+          onClose();
+          notify('success', 'Пользователь успешно отредактирован');
+        },
       });
     } catch {
-      console.log('error');
+      notify('error', 'Ошибка', 'Не удалось отредактировать пользователя');
     }
   };
 
@@ -33,10 +38,13 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
       const values = await form.validateFields();
 
       deleteMutation.mutate(values, {
-        onSuccess: onClose,
+        onSuccess: () => {
+          onClose();
+          notify('success', 'Пользователь удален');
+        },
       });
     } catch {
-      console.log('error');
+      notify('error', 'Ошибка', 'Не удалось удалить пользователя');
     }
   };
 

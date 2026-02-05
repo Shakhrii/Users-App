@@ -2,6 +2,7 @@ import { useMutationCreateUser } from '@entities/user/model/queries';
 import { Modal, Form, Space } from 'antd';
 import { UserForm } from '../form/UserForm';
 import { ButtonModal } from '../button/ButtonModal';
+import { useNotifications } from '@shared/ui/notification/NotificationProvider';
 
 type Props = {
   open: boolean;
@@ -12,16 +13,20 @@ export const CreateUserModal = ({ open, onClose }: Props) => {
   const [form] = Form.useForm();
   const createMutation = useMutationCreateUser();
   const disabled = createMutation.isPending;
+  const { notify } = useNotifications();
 
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
 
       createMutation.mutate(values, {
-        onSuccess: onClose,
+        onSuccess: () => {
+          onClose();
+          notify('success', 'Пользователь успешно создан');
+        },
       });
     } catch {
-      console.log('error');
+      notify('error', 'Ошибка', 'Не удалось создать пользователя');
     }
   };
 
