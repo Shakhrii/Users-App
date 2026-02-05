@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
 export const Footer = styled.footer`
-  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Title = styled.div`
+  height: 40px;
+  color: grey;
 `;

@@ -11,6 +11,7 @@ export const HeaderWrapper = styled.header`
 
 export const Title = styled.h1`
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
+  color: grey;
 `;
