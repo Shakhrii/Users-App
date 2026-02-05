@@ -22,7 +22,10 @@ export const UserForm = ({ form, initialValues, onFinish }: Props) => {
       <Form.Item
         label="Ссылка на аватар"
         name="avatar"
-        rules={[{ required: true, message: 'Введите ссылку' }]}
+        rules={[
+          { required: true, message: 'Введите ссылку' },
+          { type: 'url', message: 'Введите корректный URL' },
+        ]}
       >
         <Input />
       </Form.Item>
