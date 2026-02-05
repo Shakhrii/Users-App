@@ -15,6 +15,6 @@ export const Container = styled.div`
 
 export const StyledButton = styled(Button)`
   position: sticky;
-  bottom: 30px;
+  bottom: 50px;
   align-self: start;
 `;

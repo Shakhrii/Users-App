@@ -29,7 +29,6 @@ const Users = () => {
           </List.Item>
         )}
       />
-
       <S.StyledButton type="primary">Создать пользователя</S.StyledButton>
     </S.Container>
   );
