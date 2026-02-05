@@ -33,6 +33,7 @@ export const CreateUserModal = ({ open, onClose }: Props) => {
       okText="Создать"
       cancelText="Отмена"
       destroyOnHidden
+      afterClose={() => form.resetFields()}
     >
       <UserForm form={form} onFinish={() => {}} />
     </Modal>
