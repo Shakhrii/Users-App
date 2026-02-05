@@ -16,7 +16,7 @@ export const useMutationCreateUser = () => {
   return useMutation({
     mutationFn: createUser,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['todos'] });
+      await queryClient.invalidateQueries({ queryKey: usersQueryKey });
     },
   });
 };
