@@ -21,7 +21,9 @@
 ## Установка
 
 git clone https://github.com/Shakhrii/Users-App.git
+
 cd Users-App
+
 npm install
 
 ## Запуск
