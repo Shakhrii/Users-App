@@ -44,14 +44,10 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
     <Modal
       title="Редактировать пользователя"
       open={open}
-      onCancel={onClose}
-      onOk={handleOk}
       confirmLoading={editMutation.isPending}
-      okText="Сохранить"
-      cancelText="Отмена"
       destroyOnHidden
       afterClose={() => form.resetFields()}
-      footer={(_, { OkBtn }) => (
+      footer={() => (
         <Space style={{ width: '100%', justifyContent: 'space-between' }}>
           <Popconfirm
             title="Удалить пользователя?"
@@ -59,11 +55,19 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
             cancelText="Отмена"
             onConfirm={handleDelete}
           >
-            <ButtonModal disabled={disabled}>Удалить</ButtonModal>
+            <ButtonModal disabled={disabled} loading={deleteMutation.isPending}>
+              Удалить
+            </ButtonModal>
           </Popconfirm>
 
           <Space>
-            <OkBtn />
+            <ButtonModal
+              onClick={handleOk}
+              disabled={deleteMutation.isPending}
+              loading={editMutation.isPending}
+            >
+              Сохранить
+            </ButtonModal>
             <ButtonModal onClick={onClose} disabled={disabled}>
               Отмена
             </ButtonModal>

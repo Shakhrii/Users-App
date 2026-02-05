@@ -5,11 +5,12 @@ type Props = {
   children: ReactNode;
   onClick?: () => void;
   disabled?: boolean;
+  loading?: boolean;
 };
 
-export const ButtonModal = ({ children, onClick, disabled }: Props) => {
+export const ButtonModal = ({ children, onClick, disabled, loading }: Props) => {
   return (
-    <S.ButtonModal onClick={onClick} disabled={disabled}>
+    <S.ButtonModal onClick={onClick} disabled={disabled} loading={loading}>
       {children}
     </S.ButtonModal>
   );
