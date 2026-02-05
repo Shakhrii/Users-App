@@ -7,6 +7,7 @@ export const getUsers = async (): Promise<User[]> => {
 };
 
 export const createUser = async (newUser: UserClient): Promise<User> => {
+  newUser.createdAt = new Date().toString();
   const { data } = await axiosInstance.post<User>('/users', newUser);
   return data;
 };
