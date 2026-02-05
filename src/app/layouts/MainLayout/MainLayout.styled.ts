@@ -16,6 +16,8 @@ export const Main = styled.main`
 
 export const Content = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 20px;
+  min-height: 0;
 `;

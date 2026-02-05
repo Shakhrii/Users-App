@@ -1,5 +1,7 @@
+import * as S from './Footer.styled';
+
 function Footer() {
-  return <footer>Footer</footer>;
+  return <S.Footer>Footer</S.Footer>;
 }
 
 export default Footer;
