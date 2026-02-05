@@ -22,9 +22,8 @@ export const App = () => {
                 <Route path="/" element={<Users />} />
                 <Route path="/users" element={<Users />} />
               </Route>
-
-              <Route path="*" element={<NotFound />} />
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </QueryProvider>
