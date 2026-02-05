@@ -35,7 +35,7 @@ export const CreateUserModal = ({ open, onClose }: Props) => {
       destroyOnHidden
       afterClose={() => form.resetFields()}
     >
-      <UserForm form={form} onFinish={() => {}} />
+      <UserForm form={form} isEdit={false} onFinish={() => {}} />
     </Modal>
   );
 };

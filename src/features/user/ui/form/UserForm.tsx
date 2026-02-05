@@ -1,22 +1,24 @@
 import { Form, FormInstance, Input } from 'antd';
-import { UserClient } from '@entities/user/model/types';
+import { User } from '@entities/user/model/types';
 
 type Props = {
-  form: FormInstance<UserClient>;
-  initialValues?: UserClient;
-  onFinish: (values: UserClient) => void;
+  form: FormInstance<User>;
+  initialValues?: User;
+  isEdit: boolean;
+  onFinish: (values: User) => void;
 };
 
-export const UserForm = ({ form, initialValues, onFinish }: Props) => {
+export const UserForm = ({ form, initialValues, isEdit, onFinish }: Props) => {
   return (
-    <Form<UserClient>
-      form={form}
-      layout="vertical"
-      initialValues={initialValues}
-      onFinish={onFinish}
-    >
+    <Form<User> form={form} layout="vertical" initialValues={initialValues} onFinish={onFinish}>
+      {isEdit && (
+        <Form.Item label="id" name="id">
+          <Input readOnly value={initialValues?.id} />
+        </Form.Item>
+      )}
+
       <Form.Item label="Имя" name="name" rules={[{ required: true, message: 'Введите имя' }]}>
-        <Input />
+        <Input value={initialValues?.name} />
       </Form.Item>
 
       <Form.Item
@@ -27,7 +29,7 @@ export const UserForm = ({ form, initialValues, onFinish }: Props) => {
           { type: 'url', message: 'Введите корректный URL' },
         ]}
       >
-        <Input />
+        <Input value={initialValues?.avatar} />
       </Form.Item>
     </Form>
   );
