@@ -1,6 +1,7 @@
 import { useMutationCreateUser } from '@entities/user/model/queries';
-import { Modal, Form } from 'antd';
+import { Modal, Form, Space } from 'antd';
 import { UserForm } from '../form/UserForm';
+import { ButtonModal } from '../button/ButtonModal';
 
 type Props = {
   open: boolean;
@@ -10,6 +11,7 @@ type Props = {
 export const CreateUserModal = ({ open, onClose }: Props) => {
   const [form] = Form.useForm();
   const createMutation = useMutationCreateUser();
+  const disabled = createMutation.isPending;
 
   const handleOk = async () => {
     try {
@@ -34,6 +36,14 @@ export const CreateUserModal = ({ open, onClose }: Props) => {
       cancelText="Отмена"
       destroyOnHidden
       afterClose={() => form.resetFields()}
+      footer={(_, { OkBtn }) => (
+        <Space>
+          <OkBtn />
+          <ButtonModal onClick={onClose} disabled={disabled}>
+            Отмена
+          </ButtonModal>
+        </Space>
+      )}
     >
       <UserForm form={form} isEdit={false} onFinish={() => {}} />
     </Modal>

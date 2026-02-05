@@ -1,7 +1,8 @@
 import { useMutationDeleteUser, useMutationUpdateUser } from '@entities/user/model/queries';
-import { Modal, Form, Space, Popconfirm, Button } from 'antd';
+import { Modal, Form, Space, Popconfirm } from 'antd';
 import { UserForm } from '../form/UserForm';
 import { User } from '@entities/user';
+import { ButtonModal } from '../button/ButtonModal';
 
 type Props = {
   open: boolean;
@@ -13,6 +14,7 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
   const [form] = Form.useForm();
   const editMutation = useMutationUpdateUser();
   const deleteMutation = useMutationDeleteUser();
+  const disabled = editMutation.isPending || deleteMutation.isPending;
 
   const handleOk = async () => {
     try {
@@ -49,7 +51,7 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
       cancelText="Отмена"
       destroyOnHidden
       afterClose={() => form.resetFields()}
-      footer={(_, { OkBtn, CancelBtn }) => (
+      footer={(_, { OkBtn }) => (
         <Space style={{ width: '100%', justifyContent: 'space-between' }}>
           <Popconfirm
             title="Удалить пользователя?"
@@ -57,12 +59,14 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
             cancelText="Отмена"
             onConfirm={handleDelete}
           >
-            <Button type="primary">Удалить</Button>
+            <ButtonModal disabled={disabled}>Удалить</ButtonModal>
           </Popconfirm>
 
           <Space>
             <OkBtn />
-            <CancelBtn />
+            <ButtonModal onClick={onClose} disabled={disabled}>
+              Отмена
+            </ButtonModal>
           </Space>
         </Space>
       )}
