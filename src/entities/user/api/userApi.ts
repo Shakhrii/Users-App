@@ -16,3 +16,8 @@ export const updateUser = async (editedUser: User): Promise<User> => {
   const { data } = await axiosInstance.put<User>(`/users/${editedUser.id}`, editedUser);
   return data;
 };
+
+export const deleteUser = async (deletedUser: User) => {
+  const { data } = await axiosInstance.delete<User>(`/users/${deletedUser.id}`);
+  return data;
+};
