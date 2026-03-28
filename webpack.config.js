@@ -10,7 +10,7 @@ module.exports = (argv) => {
     cache: {
       type: 'filesystem',
     },
-    
+
     entry: './src/index.tsx',
 
     output: {
@@ -34,6 +34,13 @@ module.exports = (argv) => {
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(ttf|woff|woff2|eot|otf)$/,
+          type: 'asset/resource',
+          generator: {
+            filename: 'fonts/[name].[hash][ext]',
+          },
         },
       ],
     },

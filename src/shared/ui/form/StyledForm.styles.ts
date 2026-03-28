@@ -15,5 +15,11 @@ export const StyledFormWrapper = styled.div`
     width: 400px;
     display: flex;
     flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ant-form-item-explain-error {
+    width: 400px;
   }
 `;

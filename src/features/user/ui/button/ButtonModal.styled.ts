@@ -2,20 +2,20 @@ import { Button } from 'antd';
 import styled from 'styled-components';
 
 export const ButtonModal = styled(Button)`
-  background-color: #1677ff;
-  border-color: #1677ff;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
   color: #fff;
 
   &:hover,
   &:focus {
-    background-color: #4096ff;
-    border-color: #4096ff;
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
     color: #fff;
   }
 
   &:disabled {
-    background-color: #f5f5f5;
-    border-color: #d9d9d9;
+    background-color: var(--disabled-color);
+    border-color: var(--disabled-color);
     color: rgba(0, 0, 0, 0.25);
   }
 `;
