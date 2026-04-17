@@ -8,5 +8,5 @@ export const Footer = styled.footer`
 
 export const Title = styled.div`
   height: 40px;
-  color: grey;
+  color: white;
 `;

@@ -29,8 +29,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    height: 100vh;
-
+    min-height: 100vh;
     color: var(--text-color-light);
     background: linear-gradient(45deg, #13547a, #80d0c7) no-repeat;
   }

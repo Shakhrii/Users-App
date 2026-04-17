@@ -5,7 +5,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 0.5px solid #9a9a9a;
+  border-bottom: 0.5px solid #f3f1f1;
 `;
 
 export const Title = styled.h1`

@@ -1,10 +1,11 @@
-import { List, Avatar, Spin, Alert } from 'antd';
-import { LoadingOutlined, UserAddOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Avatar, Spin, Alert, Card } from 'antd';
+import { LoadingOutlined, UserAddOutlined, EditOutlined } from '@ant-design/icons';
 import { User, useUsersQuery } from '@entities/user';
 import * as S from './Users.styled';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { CreateUserModal, EditUserModal } from '@features/user/ui/';
+import Meta from 'antd/es/card/Meta';
 
 const Users = () => {
   const { data, isLoading, isError, error } = useUsersQuery();
@@ -51,7 +52,22 @@ const Users = () => {
           initialValues={selectedUser}
         />
       )}
-      <List
+      <S.StyledList>
+        {data.map((user) => (
+          <Card
+            style={{ width: 300 }}
+            cover={<img draggable={false} alt="user" src={user.avatar} />}
+            actions={[<EditOutlined key="edit" onClick={() => userClick(user)} />]}
+          >
+            <Meta
+              avatar={<Avatar src={user.avatar} />}
+              title={user.name}
+              description={`Зарегистрирован ${dayjs(user.createdAt).format('DD:MM:YYYY')}`}
+            />
+          </Card>
+        ))}
+      </S.StyledList>
+      {/* <List
         dataSource={data}
         renderItem={(user) => (
           <List.Item actions={[<EditOutlined key="edit" />, <DeleteOutlined key="delete" />]}>
@@ -66,7 +82,7 @@ const Users = () => {
             />
           </List.Item>
         )}
-      />
+      /> */}
     </S.Container>
   );
 };
