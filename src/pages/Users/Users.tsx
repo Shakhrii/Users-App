@@ -1,6 +1,5 @@
 import { List, Avatar, Spin, Alert } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
-import { UserAddOutlined } from '@ant-design/icons';
+import { LoadingOutlined, UserAddOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { User, useUsersQuery } from '@entities/user';
 import * as S from './Users.styled';
 import dayjs from 'dayjs';
@@ -55,7 +54,7 @@ const Users = () => {
       <List
         dataSource={data}
         renderItem={(user) => (
-          <List.Item actions={[<a key="list-edit">edit</a>, <a key="list-remove">remove</a>]}>
+          <List.Item actions={[<EditOutlined key="edit" />, <DeleteOutlined key="delete" />]}>
             <S.StyledListItem
               avatar={
                 <S.ClickWrapper onClick={() => userClick(user)}>
