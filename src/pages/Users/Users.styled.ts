@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, List } from 'antd';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -7,12 +7,19 @@ export const Container = styled.div`
   height: 300px;
   display: flex;
   flex-direction: column;
+  color: white;
 `;
 
 export const StyledButton = styled(Button)`
-  position: sticky;
-  bottom: 50px;
-  align-self: start;
+  margin-left: auto;
+  margin-top: 20px;
+`;
+
+export const StyledListItem = styled(List.Item.Meta)`
+  .ant-list-item-meta-title,
+  .ant-list-item-meta-description {
+    color: white !important;
+  }
 `;
 
 export const ClickWrapper = styled.span`

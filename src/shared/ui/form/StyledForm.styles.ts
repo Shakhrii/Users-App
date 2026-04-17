@@ -21,5 +21,6 @@ export const StyledFormWrapper = styled.div`
 
   .ant-form-item-explain-error {
     width: 400px;
+    color: #892911;
   }
 `;

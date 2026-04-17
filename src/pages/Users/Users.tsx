@@ -1,5 +1,6 @@
 import { List, Avatar, Spin, Alert } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { UserAddOutlined } from '@ant-design/icons';
 import { User, useUsersQuery } from '@entities/user';
 import * as S from './Users.styled';
 import dayjs from 'dayjs';
@@ -40,6 +41,9 @@ const Users = () => {
 
   return (
     <S.Container>
+      <S.StyledButton type="primary" icon={<UserAddOutlined />} onClick={openCreateUserForm}>
+        Добавить пользователя
+      </S.StyledButton>
       <CreateUserModal open={isOpenCreateUserForm} onClose={closeCreateUserForm} />
       {selectedUser && (
         <EditUserModal
@@ -51,8 +55,8 @@ const Users = () => {
       <List
         dataSource={data}
         renderItem={(user) => (
-          <List.Item>
-            <List.Item.Meta
+          <List.Item actions={[<a key="list-edit">edit</a>, <a key="list-remove">remove</a>]}>
+            <S.StyledListItem
               avatar={
                 <S.ClickWrapper onClick={() => userClick(user)}>
                   <Avatar src={user.avatar} />
@@ -64,9 +68,6 @@ const Users = () => {
           </List.Item>
         )}
       />
-      <S.StyledButton type="primary" onClick={openCreateUserForm}>
-        Создать пользователя
-      </S.StyledButton>
     </S.Container>
   );
 };

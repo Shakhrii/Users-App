@@ -13,10 +13,10 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     --bg-color: #000;
-    --accent-color: #3ca37f;
-    --text-color-light: #c2c2c2;
+    --accent-color: #13547a;
+    --text-color-light: #fff;
     --text-color-dark: #848786;
-    --hover-color: #167556;
+    --hover-color: #398dbe;
     --disabled-color: #f2f2f2;
   }
 
@@ -29,8 +29,9 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    height: 100vh;
 
     color: var(--text-color-light);
-    background-color: var(--bg-color);
+    background: linear-gradient(45deg, #13547a, #80d0c7) no-repeat;
   }
 `;
