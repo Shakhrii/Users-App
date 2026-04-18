@@ -52,6 +52,7 @@ export const EditUserModal = ({ open, onClose, initialValues }: Props) => {
     <Modal
       title="Редактировать пользователя"
       open={open}
+      onCancel={onClose}
       closable={!disabled}
       confirmLoading={editMutation.isPending}
       destroyOnHidden

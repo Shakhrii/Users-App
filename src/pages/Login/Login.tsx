@@ -66,7 +66,7 @@ function LoginPage() {
             { min: 5, message: 'Логин должен быть больше 4 символов!' },
           ]}
         >
-          <Input placeholder="Логин" />
+          <Input placeholder="Логин admin" />
         </Form.Item>
 
         <Form.Item<FieldType>
@@ -76,7 +76,7 @@ function LoginPage() {
             { min: 5, message: 'Пароль должен быть больше 4 символов!' },
           ]}
         >
-          <Input.Password placeholder="Пароль" />
+          <Input.Password placeholder="Пароль admin" />
         </Form.Item>
 
         <Form.Item<FieldType> shouldUpdate label={null}>
