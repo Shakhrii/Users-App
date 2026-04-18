@@ -8,6 +8,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   color: white;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 `;
 
 export const StyledButton = styled(Button)`
