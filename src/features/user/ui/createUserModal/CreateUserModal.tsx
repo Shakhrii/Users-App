@@ -36,6 +36,7 @@ export const CreateUserModal = ({ open, onClose }: Props) => {
       open={open}
       closable={!disabled}
       onOk={handleOk}
+      onCancel={onClose}
       confirmLoading={createMutation.isPending}
       okText="Создать"
       cancelText="Отмена"

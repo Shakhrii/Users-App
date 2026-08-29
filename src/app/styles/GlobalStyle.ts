@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     --bg-color: #000;
-    --accent-color: #13547a;
+    --accent-color: #2a7389;
     --text-color-light: #fff;
     --text-color-dark: #848786;
     --hover-color: #398dbe;
@@ -31,6 +31,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     min-height: 100vh;
     color: var(--text-color-light);
-    background: linear-gradient(45deg, #13547a, #80d0c7) no-repeat;
+    background: #2b308e;
   }
 `;
