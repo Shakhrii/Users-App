@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    padding: 0;
+    padding: 0 20px;
     min-height: 100vh;
     color: var(--text-color-light);
     background: #2b308e;

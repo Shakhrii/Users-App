@@ -50,6 +50,7 @@ const Users = () => {
         Добавить пользователя
       </S.StyledButton>
       <Pagination
+        showLessItems
         onChange={(page) => setCurrentPage(page)}
         total={data.length}
         pageSize={pageSize}

@@ -11,7 +11,7 @@ export const StyledButton = styled(BaseButton)`
 export const Container = styled.div``;
 
 const TitleBase = styled.h1`
-  font-size: 170px;
+  font-size: clamp(40px, 14.167vw, 170px);
   font-weight: bold;
   font-family: 'Dancing Script';
   align-self: flex-start;

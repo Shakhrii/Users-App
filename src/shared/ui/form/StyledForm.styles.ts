@@ -2,17 +2,18 @@ import styled from 'styled-components';
 
 export const StyledFormWrapper = styled.div`
   width: 100%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .ant-input,
   .ant-input-affix-wrapper {
-    width: 400px;
+    width: 300px;
   }
 
   .ant-form {
-    width: 400px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -20,6 +21,6 @@ export const StyledFormWrapper = styled.div`
   }
 
   .ant-form-item-explain-error {
-    width: 400px;
+    width: 300px;
   }
 `;
